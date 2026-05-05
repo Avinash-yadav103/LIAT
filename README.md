@@ -1,43 +1,80 @@
-# The Dubai Mall Interactive Sales Deck
+# The Dubai Mall — Interactive Sales Deck
 
-This project is a browser-based sales deck built with React and Node for pitching a world-scale destination property as a leasing, sponsorship, and event platform.
+This project is a browser-based sales deck built with React and an Express API. It presents The Dubai Mall as a destination platform for leasing, sponsorship, and events.
 
-## Stack
+**Live URL:** (replace with your deployed link)
 
-- React 18
-- Vite
-- Express
-- Node.js
+**Repository:** (replace with your public GitHub repo link)
 
-## What it does
+## Tech Stack & Versions
 
-- Video-first opening experience
-- Non-linear navigation through the property story
-- Dedicated sections for retail, luxury, dining, attractions, and events
-- Expandable modules for events, sponsorship, leasing, and venue storytelling
-- Lead capture form backed by a Node API
+- React 18.3.1
+- Vite 5.4.21
+- Node.js (14+ / 16+ recommended)
+- Express 4.21.2
+- GSAP 3.15.0
+- react-router-dom 6.x
 
-## Getting started
+## Features
 
-1. Install dependencies: `npm install`
-2. Start the development servers: `npm run dev`
-3. Build for production: `npm run build`
-4. Run the production server: `npm run preview`
+- Cinematic dashboard hero with GSAP scroll effects
+- Multi-page routing (Home, Destinations, Showcase, Story, Modules, Contact)
+- Reusable content model in `shared/deckData.js`
+- Lead capture form posting to a simple Express endpoint
+- Responsive layout with expanded dashboard width for large displays
 
-The app runs with the React client on Vite and an Express API on port 3001.
+## Getting Started (Local)
 
-## Design decisions
+1. Install dependencies
 
-- The deck uses a cinematic, luxury-inspired visual language with dark surfaces, gold accents, and large typography.
-- Navigation is non-linear so a salesperson can jump directly to the relevant pitch path during a live call.
-- The content is structured as a reusable data layer so the deck can grow into deeper modules without a rewrite.
+```bash
+npm install
+```
 
-## AI usage
+2. Start development servers (client + API)
 
-- AI was used to shape the presentation structure, story hierarchy, and content framing.
-- The interface leans on generated layout decisions and visual composition rather than static slide exports.
+```bash
+npm run dev
+```
+
+3. Build for production
+
+```bash
+npm run build
+```
+
+4. Preview the production server
+
+```bash
+npm run preview
+```
+
+The client dev server runs on Vite (default :5173) and the Express API runs on :3001 in development.
+
+## Deployment
+
+This project can be deployed to Vercel, Netlify, or GitHub Pages. See `DEPLOYMENT.md` for step-by-step instructions for each platform.
+
+## Design Decisions
+
+- Visual language: warm beige and gold palette to align with luxury positioning
+- Non-linear navigation: salesperson-focused flows to jump between story modules quickly
+- Data-driven pages: content in `shared/deckData.js` keeps presentation flexible and re-usable
+
+## AI Tools Used
+
+- GitHub Copilot for code suggestions and repository edits
+- GPT-5 mini (assisted authoring of documentation and structure)
 
 ## Notes
 
-- Public media URLs are used for motion in the current build.
-- The Node API stores inquiries in memory for the session.
+- Images use public Unsplash URLs; if you deploy to a restricted environment consider hosting assets or using a CDN.
+- The server stores inquiries in memory for demo purposes — not production safe. Replace with a persistent store for production.
+
+## Contributing
+
+See `CONTRIBUTING.md` for contribution guidelines.
+
+## Submission
+
+Use the `EMAIL_SUBMISSION.txt` file for a ready-to-send email body to `medi@liat.ai` including your live URL and GitHub repo link.

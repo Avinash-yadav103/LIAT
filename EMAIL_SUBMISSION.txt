@@ -1,0 +1,25 @@
+Subject: Submission — The Dubai Mall Interactive Sales Deck
+
+Hi Medi,
+
+Please find my submission for the interactive sales deck project below.
+
+Live URL: <REPLACE_WITH_LIVE_URL>
+GitHub: <REPLACE_WITH_GITHUB_REPO_URL>
+
+Brief notes:
+- Tech stack: React (Vite), Express, GSAP, react-router-dom
+- Build: `npm run build` → `dist` (client), Express API served from the same server in production (or host API separately)
+- Design: Luxury-cinematic aesthetic, non-linear navigation for sales calls
+- AI assistance: GitHub Copilot + GPT-5 mini (documentation and content framing)
+
+Attachments in repo:
+- `README.md` — Setup, tech stack, and submission notes
+- `DEPLOYMENT.md` — Deploy steps for Vercel/Netlify/GitHub Pages
+- `WRITEUP.md` — Short design rationale and next steps
+
+If you need any additional details or a short demo video, happy to provide it.
+
+Best,
+[Your Name]
+[Your email]
