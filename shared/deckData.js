@@ -20,9 +20,9 @@ export const deckData = {
       summary:
         'A grand, luminous entry state that frames the mall as a city-scale destination for luxury, leisure, and live demand.',
       background:
-        'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80',
+        'https://images.unsplash.com/photo-1520763185298-1b434c919abe?auto=format&fit=crop&w=1600&q=80',
       orbitImage:
-        'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=700&q=80',
+        'https://images.unsplash.com/photo-1516406146926-c627033eee98?auto=format&fit=crop&w=700&q=80',
       stats: ['1,200+ retailers', 'Global tourism draw', 'Premium dwell time']
     },
     {
@@ -33,9 +33,9 @@ export const deckData = {
       summary:
         'A cinematic presentation of luxury fashion, flagship visibility, and brand adjacency designed for tenants and aspirational labels.',
       background:
-        'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=80',
+        'https://images.unsplash.com/photo-1555377519-c92f03641dec?auto=format&fit=crop&w=1600&q=80',
       orbitImage:
-        'https://images.unsplash.com/photo-1469398715555-76331ac99c17?auto=format&fit=crop&w=700&q=80',
+        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80',
       stats: ['Flagship-ready', 'Luxury focus', 'High-intent audience']
     },
     {
@@ -46,9 +46,9 @@ export const deckData = {
       summary:
         'Aquarium, fountain energy, and destination attractions are framed as reasons to visit, not just things to do after shopping.',
       background:
-        'https://images.unsplash.com/photo-1493244040629-496f6d136cc3?auto=format&fit=crop&w=1600&q=80',
+        'https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1600&q=80',
       orbitImage:
-        'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=700&q=80',
+        'https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=700&q=80',
       stats: ['Repeat traffic', 'Immersive moments', 'Content-worthy scenes']
     },
     {
@@ -59,9 +59,9 @@ export const deckData = {
       summary:
         'A flexible events and sponsorship story that positions the property as a booking platform for brands, agencies, and producers.',
       background:
-        'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=80',
+        'https://images.unsplash.com/photo-1501612008063-e6ddd1ef86e7?auto=format&fit=crop&w=1600&q=80',
       orbitImage:
-        'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=700&q=80',
+        'https://images.unsplash.com/photo-1501612008063-e6ddd1ef86e7?auto=format&fit=crop&w=700&q=80',
       stats: ['Bookable venue energy', 'Brand activations', 'Calendar leverage']
     }
   ],

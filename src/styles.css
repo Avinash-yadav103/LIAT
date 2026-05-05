@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   color-scheme: light;
@@ -6,9 +6,9 @@
   --nav-offset: 20px;
   --nav-rail: calc(var(--nav-width) + var(--nav-offset) + 28px);
   --bg: #f2d0b7;
-  --bg-soft: rgba(255, 241, 233, 0.7);
-  --panel: rgba(255, 246, 240, 0.68);
-  --panel-strong: rgba(255, 245, 238, 0.94);
+  --bg-soft: rgba(255, 241, 233, 0.72);
+  --panel: rgba(255, 249, 244, 0.72);
+  --panel-strong: rgba(255, 245, 238, 0.96);
   --line: rgba(110, 68, 43, 0.12);
   --text: #201816;
   --muted: rgba(32, 24, 22, 0.68);
@@ -53,6 +53,17 @@ button {
   overflow: hidden;
 }
 
+.deck-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.18), transparent 24%),
+    radial-gradient(circle at 82% 14%, rgba(201, 137, 100, 0.2), transparent 20%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .ambient {
   position: fixed;
   inset: auto;
@@ -89,10 +100,6 @@ button {
   justify-content: space-between;
   gap: 24px;
   padding: 32px var(--nav-rail) 16px clamp(20px, 3vw, 40px);
-  align-items: flex-end;
-}
-
-.dashboard-topbar {
   align-items: center;
 }
 
@@ -156,6 +163,35 @@ button {
   letter-spacing: 0.22em;
   font-size: 0.72rem;
   color: var(--gold);
+}
+
+/* Section-specific color overrides */
+.story.destination .eyebrow {
+  color: #c9956f;
+}
+
+.story.fashion .eyebrow {
+  color: #d4a574;
+}
+
+.story.entertainment .eyebrow {
+  color: #b89968;
+}
+
+.story.events .eyebrow {
+  color: #a89560;
+}
+
+.story.dining .eyebrow {
+  color: #ca9f75;
+}
+
+.story.luxury .eyebrow {
+  color: #d4af37;
+}
+
+.story.attractions .eyebrow {
+  color: #b8a087;
 }
 
 .navigator {
@@ -263,7 +299,7 @@ button {
 }
 
 .deck-main {
-  width: min(1180px, calc(100vw - 40px));
+  width: min(1480px, calc(100vw - 40px));
   margin: 0 auto;
   padding: 0 var(--nav-rail) 56px clamp(20px, 3vw, 40px);
 }
@@ -279,18 +315,18 @@ button {
 .dashboard {
   position: relative;
   overflow: hidden;
-  padding: 16px;
+  padding: 12px;
 }
 
 .dashboard-frame {
   position: relative;
-  min-height: 720px;
-  border-radius: 28px;
+  min-height: 760px;
+  border-radius: 32px;
   overflow: hidden;
-  background-image: linear-gradient(180deg, rgba(40, 25, 19, 0.12), rgba(40, 25, 19, 0.38)), var(--dashboard-image);
+  background-image: linear-gradient(180deg, rgba(40, 25, 19, 0.08), rgba(40, 25, 19, 0.42)), var(--dashboard-image);
   background-size: cover;
   background-position: center calc(50% + (var(--scroll-progress) * 16px));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 24px 80px rgba(92, 56, 39, 0.15);
 }
 
 .dashboard-tint {
@@ -304,9 +340,9 @@ button {
 
 .dashboard-copy {
   position: absolute;
-  left: clamp(24px, 4vw, 44px);
-  top: clamp(34px, 5vw, 58px);
-  max-width: min(720px, 58%);
+  left: clamp(28px, 4.2vw, 50px);
+  top: clamp(34px, 5vw, 60px);
+  max-width: min(680px, 54%);
   z-index: 2;
   transform: translateY(calc(var(--scroll-progress) * 12px));
 }
@@ -316,15 +352,15 @@ button {
 }
 
 .dashboard-copy h2 {
-  font-size: clamp(3.4rem, 7vw, 7.2rem);
-  line-height: 0.92;
-  color: #f6ede8;
-  text-shadow: 0 14px 32px rgba(34, 18, 11, 0.28);
-  max-width: 9ch;
+  font-size: clamp(3.7rem, 7.2vw, 7.8rem);
+  line-height: 0.9;
+  color: #f7efea;
+  text-shadow: 0 16px 34px rgba(34, 18, 11, 0.24);
+  max-width: 8ch;
 }
 
 .dashboard-copy .hero-lede {
-  max-width: 34rem;
+  max-width: 32rem;
   color: rgba(255, 248, 243, 0.88);
   font-size: 1.02rem;
 }
@@ -337,12 +373,12 @@ button {
 
 .dashboard-floating {
   position: absolute;
-  right: clamp(24px, 4vw, 52px);
+  right: clamp(22px, 3.6vw, 44px);
   top: 50%;
-  width: min(360px, 32vw);
-  height: min(360px, 32vw);
-  min-width: 280px;
-  min-height: 280px;
+  width: min(340px, 30vw);
+  height: min(340px, 30vw);
+  min-width: 260px;
+  min-height: 260px;
   transform: translateY(calc(-42% + (var(--scroll-progress) * 22px)));
   z-index: 2;
 }
@@ -403,9 +439,9 @@ button {
 
 .dashboard-dock {
   position: absolute;
-  left: clamp(24px, 4vw, 44px);
-  right: clamp(24px, 4vw, 44px);
-  bottom: 26px;
+  left: clamp(22px, 3.6vw, 42px);
+  right: clamp(22px, 3.6vw, 42px);
+  bottom: 22px;
   z-index: 2;
   display: flex;
   justify-content: space-between;
@@ -425,7 +461,7 @@ button {
 }
 
 .dock-copy strong {
-  font-size: clamp(1rem, 2vw, 1.55rem);
+  font-size: clamp(0.98rem, 1.9vw, 1.45rem);
   max-width: 24ch;
 }
 
@@ -637,9 +673,9 @@ button {
 }
 
 .story {
-  opacity: 0.8;
-  transform: translateY(14px) scale(0.99);
-  transition: opacity 300ms ease, transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  opacity: 0.78;
+  transform: translateY(16px) scale(0.992);
+  transition: opacity 320ms ease, transform 320ms ease, box-shadow 320ms ease, border-color 320ms ease;
 }
 
 .story.is-active {
@@ -667,14 +703,9 @@ button {
 .story-grid {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 0.96fr 1.04fr;
   gap: 18px;
   align-items: stretch;
-}
-
-.story-video-card,
-.hero-media {
-  transform: translateY(calc(var(--scroll-progress) * -8px));
 }
 
 .story-copy,
@@ -806,6 +837,12 @@ select:focus {
 
   .topbar {
     padding-right: clamp(20px, 3vw, 40px);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topbar-meta {
+    text-align: left;
   }
 
   .navigator {
@@ -827,15 +864,6 @@ select:focus {
   .dashboard-floating {
     width: min(300px, 38vw);
     height: min(300px, 38vw);
-  }
-
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .topbar-meta {
-    text-align: left;
   }
 
   .hero,
