@@ -131,6 +131,16 @@ button {
   color: rgba(32, 24, 22, 0.55);
 }
 
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 200ms ease;
+}
+
+.brand-link:hover {
+  opacity: 0.8;
+}
+
 .top-nav {
   display: flex;
   flex-wrap: wrap;
@@ -138,7 +148,8 @@ button {
   justify-content: center;
 }
 
-.top-nav button {
+.top-nav button,
+.top-nav a {
   border: 1px solid rgba(110, 68, 43, 0.12);
   background: rgba(255, 249, 244, 0.62);
   color: var(--text);
@@ -146,6 +157,17 @@ button {
   border-radius: 999px;
   box-shadow: var(--shadow);
   backdrop-filter: blur(14px);
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.top-nav a:hover,
+.top-nav button:hover {
+  background: rgba(255, 249, 244, 0.88);
+  transform: translateY(-2px);
 }
 
 .topbar-meta {
@@ -220,6 +242,9 @@ button {
   transform: translateX(14px) scale(0.96);
   animation: orbit-in 600ms ease forwards;
   animation-delay: var(--orbit-delay, 0ms);
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
 }
 
 .orbit-node strong {
