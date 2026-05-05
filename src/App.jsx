@@ -9,6 +9,19 @@ import { ModulesPage } from './pages/ModulesPage';
 import { ContactPage } from './pages/ContactPage';
 import { deckData } from '../shared/deckData.js';
 
+function isValidDeck(data) {
+  return Boolean(
+    data
+    && data.property
+    && Array.isArray(data.dashboardPages)
+    && data.dashboardPages.length > 0
+    && Array.isArray(data.quickStats)
+    && Array.isArray(data.journey)
+    && data.modules
+    && Array.isArray(data.actionCards)
+  );
+}
+
 function AppRoutes() {
   const [deck, setDeck] = useState(deckData);
 
@@ -16,8 +29,21 @@ function AppRoutes() {
     const controller = new AbortController();
 
     fetch('/api/deck', { signal: controller.signal })
-      .then((response) => response.json())
-      .then((data) => setDeck(data))
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Deck API failed with status ${response.status}`);
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        if (isValidDeck(data)) {
+          setDeck(data);
+          return;
+        }
+
+        setDeck(deckData);
+      })
       .catch(() => setDeck(deckData));
 
     return () => controller.abort();

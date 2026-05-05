@@ -8,8 +8,15 @@ export function Layout({ children, deck }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.brand-mark, .top-nav a, .top-nav button, .topbar-meta', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.08, ease: 'power3.out' });
-      gsap.fromTo('.orbit-navigator', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: 'power3.out' });
+      const topbarTargets = gsap.utils.toArray('.brand-mark, .top-nav a, .topbar-meta');
+      if (topbarTargets.length > 0) {
+        gsap.fromTo(topbarTargets, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.08, ease: 'power3.out' });
+      }
+
+      const orbitNavigator = gsap.utils.toArray('.orbit-navigator');
+      if (orbitNavigator.length > 0) {
+        gsap.fromTo(orbitNavigator, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: 'power3.out' });
+      }
     }, shellRef);
 
     return () => ctx.revert();

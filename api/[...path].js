@@ -46,7 +46,12 @@ function readBody(req) {
 }
 
 export default async function handler(req, res) {
-  const path = Array.isArray(req.query?.path) ? req.query.path : [];
+  const queryPath = req.query?.path;
+  const path = Array.isArray(queryPath)
+    ? queryPath
+    : typeof queryPath === 'string'
+      ? [queryPath]
+      : [];
   const resource = path[0];
 
   if (req.method === 'GET' && resource === 'deck') {

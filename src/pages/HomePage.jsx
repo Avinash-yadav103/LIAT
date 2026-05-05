@@ -4,10 +4,17 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export function HomePage({ deck }) {
-  const [activeDashboardPage, setActiveDashboardPage] = useState(deck.dashboardPages[0].id);
+  const initialDashboardId = deck.dashboardPages?.[0]?.id ?? 'destination';
+  const [activeDashboardPage, setActiveDashboardPage] = useState(initialDashboardId);
   const [dashboardTransitioning, setDashboardTransitioning] = useState(false);
   const shellRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!deck.dashboardPages?.some((page) => page.id === activeDashboardPage)) {
+      setActiveDashboardPage(deck.dashboardPages?.[0]?.id ?? 'destination');
+    }
+  }, [activeDashboardPage, deck.dashboardPages]);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -15,7 +22,10 @@ export function HomePage({ deck }) {
     const ctx = gsap.context(() => {
       gsap.fromTo('.dashboard-copy', { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power4.out', delay: 0.08 });
       gsap.fromTo('.dashboard-floating', { scale: 0.92, opacity: 0, rotate: -2 }, { scale: 1, opacity: 1, rotate: 0, duration: 1, ease: 'power3.out', delay: 0.18 });
-      gsap.fromTo('.orbit-node', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out', delay: 0.24 });
+      const orbitNodes = gsap.utils.toArray('.orbit-node');
+      if (orbitNodes.length > 0) {
+        gsap.fromTo(orbitNodes, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out', delay: 0.24 });
+      }
       gsap.fromTo('.dashboard-dock', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.3 });
 
       gsap.to('.dashboard-frame', {
@@ -48,6 +58,10 @@ export function HomePage({ deck }) {
     () => deck.dashboardPages.find((page) => page.id === activeDashboardPage) || deck.dashboardPages[0],
     [deck.dashboardPages, activeDashboardPage]
   );
+
+  if (!activeDashboard) {
+    return null;
+  }
 
   const switchDashboardPage = (pageId) => {
     if (pageId === activeDashboardPage) {
