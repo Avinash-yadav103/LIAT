@@ -1,4 +1,5 @@
 import express from 'express';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { deckData } from '../shared/deckData.js';
@@ -9,6 +10,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, 'dist');
+const indexFile = path.join(distDir, 'index.html');
+const hasBuiltClient = fs.existsSync(indexFile);
 
 app.use(express.json({ limit: '1mb' }));
 
@@ -40,10 +43,19 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true });
 });
 
-if (process.env.NODE_ENV === 'production') {
+// Serve the built SPA whenever a client build exists.
+// This is safer across hosting platforms where NODE_ENV may vary.
+if (hasBuiltClient) {
   app.use(express.static(distDir));
   app.get('*', (_req, res) => {
-    res.sendFile(path.join(distDir, 'index.html'));
+    res.sendFile(indexFile);
+  });
+} else {
+  app.get('/', (_req, res) => {
+    res.status(503).json({
+      ok: false,
+      message: 'Client build not found. Run "npm run build" before starting the server.'
+    });
   });
 }
 
